@@ -2,6 +2,7 @@
 
 from openpyxl import load_workbook
 from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
 
 from datetime import datetime
 
@@ -15,7 +16,7 @@ def fileread(name,i,j,k):
 	cusy = X.year
 	cusm = X.month
 	cusd = X.day
-	idname = str(cusy)+'-'+str(cusm)+'-'
+	idname = str(cusy)+'-'+str(cusm)+str(cusd)
 
 	wb = load_workbook(filename = name +'.xlsx')
 	ws = wb.active
@@ -31,12 +32,19 @@ def fileread(name,i,j,k):
 		bank.append(line)
 	for b in bank: # 確認存入是否正確
 			print(str(b[i]),b[j],b[k])
+	#存入資料
+	wbr = Workbook()
+	dest_filename = name+idname+'.xlsx'
+	ws2 = wbr.create_sheet(title=name)
 
-	
+	for b in bank: 
+		ws2.append(b)
+
+	wbr.save(filename = dest_filename)
+
+
 	
 
 fileread('代收-一銀文',0,3,6)
 
-print('------------')
 
-fileread('代收-聯邦茹',1,4,5)
