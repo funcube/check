@@ -36,9 +36,9 @@ def fileread(name,i,j,k):
 
         for row in range(0,mxrow):
             ws2.cell(row=row+1,column=1).value = name
-            ws2.cell(row=row+1,column=2).value = ws.cell(row=row+1,column=1).value
-            ws2.cell(row=row+1,column=3).value = ws.cell(row=row+1,column=4).value
-            ws2.cell(row=row+1,column=4).value = ws.cell(row=row+1,column=6).value
+            ws2.cell(row=row+1,column=2).value = ws.cell(row=row+1,column=i).value
+            ws2.cell(row=row+1,column=3).value = ws.cell(row=row+1,column=j).value
+            ws2.cell(row=row+1,column=4).value = ws.cell(row=row+1,column=k).value
         #讀取同步轉存到其他資料表
             
         wbr.save(filename = dest_filename)
@@ -48,8 +48,8 @@ def fileread(name,i,j,k):
 # (2）使用函數
 
 fileread('代收-一銀文',1,4,7)
-fileread('代收-臺企公司',1,4,5)
-fileread('代收-臺企榮和',1,4,5)
-fileread('代收-臺企鑫',1,4,5)
-fileread('代收-聯邦茹',2,3,4)
-
+fileread('代收-臺企公司',1,4,6)
+fileread('代收-臺企榮和',1,4,6)
+fileread('代收-臺企鑫',1,4,6)
+fileread('代收-聯邦茹',2,5,7)
+fileread('代收-板信文',1,4,6)
